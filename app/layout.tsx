@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 
 import "./globals.css";
 import Layout from "./(root)/layout";
+import { Toaster } from "@/components/ui/toaster";
 
 const ibmPlexSans = localFont({
   src: [
@@ -35,6 +36,8 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
         className={`${ibmPlexSans.className} ${bebasNeue.variable} antialiased`}
       >
         {children}
+
+        <Toaster />
       </body>
     </html>
   );
