@@ -9,7 +9,7 @@ import { useRef, useState } from "react";
 
 const {
   env: {
-    imagekit: { privateKey, publicKey, urlEndpoint },
+    imagekit: { publicKey, urlEndpoint },
   },
 } = config;
 
@@ -25,12 +25,16 @@ const authenticator = async () => {
       );
     }
 
-    const data = await response.json();
+    // console.log('resss', await response.text())
+
+    const data = await response?.json();
+    
     const { signature, expire, token } = data;
 
     return { token, expire, signature };
   } catch (error: any) {
-    throw new Error("Authentication request failed", error.message);
+    console.log('errr', error)
+    throw new Error(`Authentication request failed, ${error?.message}`);
   }
 };
 
